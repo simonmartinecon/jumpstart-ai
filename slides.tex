@@ -1,0 +1,429 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+
+% ---------------------------------------------------------------
+% Packages
+% ---------------------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{fontawesome5}
+\usepackage{tabularx,booktabs}
+\usepackage{listings}
+\usepackage{dirtree}
+\usepackage[most]{tcolorbox}
+
+% ---------------------------------------------------------------
+% Design: minimal light blue
+% ---------------------------------------------------------------
+\definecolor{accent}{RGB}{45,110,170}
+\definecolor{rulecol}{RGB}{160,195,230}
+\definecolor{boxfill}{RGB}{232,241,250}
+\definecolor{muted}{RGB}{110,110,110}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamercolor{frametitle}{fg=accent}
+\setbeamercolor{title}{fg=accent}
+\setbeamercolor{subtitle}{fg=muted}
+\setbeamercolor{structure}{fg=accent}
+\setbeamercolor{normal text}{fg=black!85}
+\setbeamerfont{frametitle}{size=\Large}
+\setbeamertemplate{itemize items}{\textcolor{accent}{\tiny$\blacksquare$}}
+\setbeamertemplate{enumerate items}[default]
+
+\setbeamertemplate{frametitle}{%
+  \vspace*{0.5em}%
+  \usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}\insertframetitle\par
+  \vspace{-0.3em}{\color{rulecol}\rule{\linewidth}{0.6pt}}%
+}
+\setbeamertemplate{footline}{%
+  \hfill{\color{muted}\footnotesize\insertframenumber}\hspace*{1.2em}\vspace*{0.8em}%
+}
+
+% Prompt boxes: example instructions to the agent
+\newtcolorbox{promptbox}{colback=boxfill, colframe=boxfill, boxrule=0pt,
+  arc=2pt, left=5pt, right=5pt, top=2pt, bottom=2pt, before skip=3pt,
+  after skip=3pt, fontupper=\small\itshape\raggedright}
+\newcommand{\prompt}[1]{\begin{promptbox}\textcolor{accent}{\faCommentDots}\enspace #1\end{promptbox}}
+
+% Highlight boxes: key messages
+\newtcolorbox{keybox}{colback=white, colframe=rulecol, boxrule=0.6pt,
+  arc=2pt, left=6pt, right=6pt, top=3pt, bottom=3pt}
+
+% Code listings (examples are included from files)
+\lstset{basicstyle=\ttfamily\scriptsize, backgroundcolor=\color{boxfill},
+  frame=none, columns=fullflexible, keepspaces=true, upquote=true,
+  breaklines=true, aboveskip=3pt, belowskip=3pt, xleftmargin=3pt,
+  xrightmargin=3pt, commentstyle=\color{muted}}
+
+% Directory trees
+\renewcommand{\DTstyle}{\small}
+\renewcommand{\DTstylecomment}{\color{muted}\footnotesize}
+\setlength{\DTbaselineskip}{12pt}
+\DTsetlength{0.2em}{1em}{0.2em}{0.4pt}{1.6pt}
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcommand{\file}[1]{\texttt{#1}}
+\newcommand{\email}{\href{mailto:simon.martin@univie.ac.at}{simon.martin@univie.ac.at}}
+\newcommand{\icon}[1]{\textcolor{accent}{#1}}
+% TODO: replace once the GitHub repo exists
+\newcommand{\repourl}{\textcolor{red}{TODO: GitHub repo}}
+
+% ---------------------------------------------------------------
+% Title
+% ---------------------------------------------------------------
+\title{Jump-starting AI agents}
+\subtitle{A practical quick start for economists}
+\author{Simon Martin}
+\institute{\footnotesize
+  \faEnvelope\enspace \email\\[2pt]
+  \faGlobe\enspace \href{https://sites.google.com/view/simonmartinecon/}{sites.google.com/view/simonmartinecon}\\[2pt]
+  \faGithub\enspace \repourl}
+\date{\footnotesize Version 0.1, October 2026}
+
+\begin{document}
+
+% ---------------------------------------------------------------
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Introduction}
+
+\begin{frame}{About these slides}
+  \begin{itemize}
+    \item \textbf{Objective:} get you started on one of your own projects right after skimming these slides.
+    \item \textbf{For whom:} economists in academia, but much of this applies more widely.
+    \item \textbf{Prerequisites:} almost none. To start on your project right away, you need a basic subscription (about 20~USD/month) with any AI provider.
+    \item \textbf{Caveat:} this is my personal take in a field that changes very fast. It is what works for me, not a fixed recipe: adjust it to your own workflow and software.
+    \item \textbf{Meta:} these slides were made with an agent, following exactly the workflow they describe.
+  \end{itemize}
+  \vspace{0.5em}
+  \begin{keybox}
+    \icon{\faComments}\enspace Happy to discuss with anyone, any time:\enspace \email
+  \end{keybox}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Chatbot vs agent}
+  \renewcommand{\arraystretch}{1.35}
+  \begin{tabularx}{\linewidth}{@{}l Y Y@{}}
+    & \icon{\faCommentDots}\enspace\textbf{Chatbot} & \icon{\faUserTie}\enspace\textbf{Agent} \\
+    \midrule
+    Input   & you copy/paste text into the chat & reads your files directly \\
+    Output  & you copy/paste answers back into your documents & writes into your files (text, code, tables) \\
+    Context & the current chat only & your whole project folder \\
+    Tasks   & answers one question at a time & plans and carries out multi-step tasks on its own \\
+    \bottomrule
+  \end{tabularx}
+  \vspace{1em}
+  \begin{keybox}
+    The basics on these slides get you maybe 90--95\% of the gains. Ignore advanced features (skills, GitHub integration, \dots) for now: start simple.
+  \end{keybox}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{``Coding agent'': not just for coding}
+  \begin{itemize}
+    \item \textbf{Misconception 1: coding is for programmers.} Almost everything you do on a computer is ``coding'': writing and formatting text, reading documents, calculating, combining content from several files.
+    \item \textbf{Misconception 2: it is for empirical work only.} Agents work just as well for writing, admin and theory; their maths skills have improved a lot recently.
+  \end{itemize}
+  \vspace{0.3em}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \icon{\faPen}\enspace\textbf{Writing}
+      \prompt{Check that the introduction of paper.tex is consistent with Section 5.}
+      \icon{\faClipboardList}\enspace\textbf{Admin}
+      \prompt{Draft the progress report from the documents in funding/.}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \icon{\faInfinity}\enspace\textbf{Theory}
+      \prompt{Turn my notes in notes.md into a formal proposition, in the style of the samples in samples/.}
+      \icon{\faChartBar}\enspace\textbf{Empirics}
+      \prompt{Add clustered standard errors to all regressions in code/analysis.do.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{What it is, and what it isn't}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \icon{\faDice}\enspace\textbf{``Just a token-guessing machine?''}
+      \begin{itemize}
+        \item Technically, yes: it predicts the next piece of text.
+        \item But predicting well at this scale means it can follow arguments, plan tasks and check proofs.
+        \item Judge it by its results on your own tasks.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \icon{\faDatabase}\enspace\textbf{Not a store of truth}
+      \begin{itemize}
+        \item It is not a database, and not Wikipedia.
+        \item It reconstructs facts rather than looking them up, so they can be wrong, outdated or invented (citations!).
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \vspace{1em}
+  \begin{keybox}
+    \icon{\faLightbulb}\enspace Strong at working with what you give it, weak at recalling facts. So provide the sources (literature/, data/), and let it compute in code instead of answering from memory (see slides~\ref{script} and~\ref{pitfalls}).
+  \end{keybox}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{What you need}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \icon{\faTools}\enspace\textbf{Getting started}
+      \begin{itemize}\small
+        \item \textbf{Subscription:} any basic plan at about 20~USD/month (Claude, ChatGPT/Codex, Gemini, \dots). Free plans are usually too limited; 200~USD plans are rarely needed. The provider matters less than you might think.
+        \item \textbf{Software:} an editor with the agent built in, e.g.\ VS Code with the Claude Code extension (my setup).
+        \item \textbf{Setup:} ask the agent to install or explain LaTeX, Stata paths etc., and to convert existing .docx/.pdf drafts to .tex/.md once.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \icon{\faSlidersH}\enspace\textbf{Settings}
+      \begin{itemize}\small
+        \item \textbf{Model:} any current model is fine. No need to chase every new release.
+        \item \textbf{Effort:} medium for most tasks; it trades depth against speed and tokens. High only for occasional thorough checks.
+        \item \textbf{Tokens:} the 20~USD plan suffices for most daily use. What eats tokens: many parallel web searches, and binary files (.docx, .xlsx, .pdf) instead of plain text.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Core mindset}
+
+\begin{frame}{Your agent is your research assistant}
+  \begin{itemize}
+    \item Extremely capable, but only as good as the context you give it.
+    \item Your job, as with any new RA:
+    \begin{itemize}
+      \item \textbf{Context:} background, related literature, your terminology. A brilliant RA with a physics background needs to know how you use certain terms.
+      \item \textbf{Instructions:} what to do, which output you expect, and in which file.
+      \item \textbf{Unclear points:} say how to handle them, for example:
+    \end{itemize}
+  \end{itemize}
+  \prompt{Never make assumptions. Always clarify with me first.}
+  \prompt{Proceed as far as you can. Leave a TODO note in the document for anything unclear, so we can come back to it later.}
+  \begin{itemize}
+    \item You do most of this once, in \file{instructions.md} (see slide~\ref{instructions}).
+  \end{itemize}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{You stay in charge}
+  \begin{itemize}
+    \item RAs make mistakes and misread input, and so does your agent. \textbf{You remain responsible for the final output.}
+    \item \textbf{Verify:} read and check everything, and leave enough time for it at the end. AI slop shows.
+    \item A second agent can cross-check for you, but the responsibility stays with you.
+    \item \textbf{Memory drifts:} as a session grows, older or partly contradictory instructions get lost. Don't assume everything you ever said is still respected; now and then ask it to re-read the instructions or double-check.
+    \item \textbf{Fresh sessions:} start new sessions rather than one endless chat. Let the agent record progress and open points in \file{status.md}, and read it at the start of each session.
+  \end{itemize}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Project = folder}
+  \begin{itemize}
+    \item Agents work in \textbf{projects}, and a project is simply a folder on your computer.
+    \item Everything the agent needs goes in there, and you come back to the same folder each time. Many projects are short-lived; that is fine.
+  \end{itemize}
+  \vspace{0.3em}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \textbf{A research paper}\par\vspace{0.3em}
+      \input{examples/tree_paper.tex}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \textbf{These slides}\par\vspace{0.3em}
+      \input{examples/tree_slides.tex}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Plain text for everything you work on}
+  \renewcommand{\arraystretch}{1.3}
+  \begin{tabularx}{\linewidth}{@{}Y Y@{}}
+    \icon{\faFile*}\enspace\textbf{Plain text} & \icon{\faFileArchive}\enspace\textbf{Binary} \\
+    \midrule
+    .tex, .md, .txt, .csv, .do, .R, .py & .docx, .xlsx, .pdf, .dta, .png \\
+    $\rightarrow$ everything you actively work on & $\rightarrow$ only pure input (literature, external files) and final output (the compiled PDF) \\
+    \bottomrule
+  \end{tabularx}
+  \vspace{0.3em}
+  \begin{itemize}
+    \item \textbf{Why:} plain text is close to how the agent reads: much faster, far fewer tokens, and much easier to edit.
+    \item \textbf{Example:} to find GDP for Austria in 2020, the agent first has to decode an .xlsx file. In a .csv, one quick search returns the number.
+    \item \textbf{Bonus:} changes over time are easy to see (what changed, when, and why), even with simple Dropbox file history.
+  \end{itemize}
+  \begin{keybox}
+    \icon{\faLightbulb}\enspace\textbf{Try it:} open a .docx or .pdf in Notepad or TextEdit. That is what the agent has to work through.
+  \end{keybox}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{No copy/paste}
+  \begin{itemize}
+    \item Copy/paste is friction: you should never need it.
+    \item \textbf{Input:} point the agent to where things are.
+  \end{itemize}
+  \prompt{Consider Smith2023.pdf in literature/.}
+  \prompt{Rework paragraph 3 of the introduction in paper.tex.}
+  \prompt{Check the equation in line 142 of paper.tex.}
+  \begin{itemize}
+    \item \textbf{Output:} have it write straight into the final file. It finds the right place.
+  \end{itemize}
+  \prompt{Slide 17 is fine as discussed. Write it into slides.tex.}
+  \begin{itemize}
+    \item Never copy answers from the chat window into your documents.
+  \end{itemize}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}[fragile]{Script everything}
+  \label{script}
+  \begin{itemize}\small
+    \item Every table, figure and number in your document comes from a script. Never edit generated tables by hand: you will redo each one ten more times, so make it come out right from the code.
+    \item You don't need to know how to script an operation: the agent does it for you.
+  \end{itemize}
+  \begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+      \lstset{basicstyle=\ttfamily\tiny}
+      \footnotesize\textbf{code/wage\_regs.do} writes the table:
+      \lstinputlisting{examples/wage_regs.do}
+      \textbf{paper.tex} includes it:
+      \lstinputlisting{examples/paper_input.tex}
+    \end{column}
+    \begin{column}{0.44\textwidth}
+      \footnotesize
+      \renewcommand{\arraystretch}{1.3}
+      \begin{tabularx}{\linewidth}{@{}Y Y@{}}
+        \toprule
+        \textcolor{red!70!black}{\faTimes}\enspace\textbf{Don't} & \textcolor{green!50!black}{\faCheck}\enspace\textbf{Do} \\
+        \midrule
+        Change the column order of Table~2 in paper.tex. & Change wage\_regs.do so that Table~2 comes out in this column order. \\
+        \midrule
+        What does this coefficient imply in euros? (Then paste the answer.) & Add this calculation to the do-file, export the number, and use it in Section~4. \\
+        \bottomrule
+      \end{tabularx}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{instructions.md}
+
+\begin{frame}{\file{instructions.md}: the contract}
+  \label{instructions}
+  \begin{columns}[T]
+    \begin{column}{0.6\textwidth}
+      \footnotesize
+      \renewcommand{\arraystretch}{1.2}
+      \begin{tabularx}{\linewidth}{@{}l Y@{}}
+        \toprule
+        \textbf{Section} & \textbf{My typical content} \\
+        \midrule
+        Scope      & We are writing a research paper in labour economics. \\
+        Literature & Read the papers in literature/. \\
+        Stages     & sub-steps, and how we proceed and interact (longer projects) \\
+        Output     & The main document is paper.tex. \\
+        Software   & which software; where code, input and output files are \\
+        Style      & a writing sample of mine in samples/: sets layout, language and tone \\
+        Checks     & At the end: grammar, language, style and consistency check. \\
+        Logging    & Record progress and TODOs in status.md; read it at the start of each session. \\
+        \bottomrule
+      \end{tabularx}
+    \end{column}
+    \begin{column}{0.36\textwidth}
+      \begin{itemize}\small
+        \item Instead of long one-off prompts: one file that sets the scope and the rules.
+        \item \textbf{Format barely matters:} no syntax rules, .md or .txt. A little structure (headings) helps.
+        \item \textbf{Why bother:} 10--15 minutes of writing forces you to think through background, deliverables and sub-steps, and tells your RA clearly what to do.
+        \item Extend it as you go.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}[fragile]{Example: the \file{instructions.md} behind these slides}
+  \lstset{basicstyle=\ttfamily\fontsize{4.2}{5}\selectfont}
+  \begin{columns}[T]
+    \begin{column}{0.49\textwidth}
+      \lstinputlisting[linerange={1-21}]{instructions.md}
+    \end{column}
+    \begin{column}{0.49\textwidth}
+      \lstinputlisting[linerange={22-37}]{instructions.md}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Ways of working}
+
+\begin{frame}{Ways of working}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \icon{\faClock}\enspace\textbf{Asynchronous}
+      \begin{itemize}\small
+        \item Longer tasks run in the background: half an hour, a few hours, overnight. Run several agents on different projects; reconcile when they finish.
+        \item Settle all decisions up front, or defer non-critical ones as TODOs. Avoid: the agent stops after an hour with a question.
+      \end{itemize}
+      \prompt{Plan the subtasks for this stage and ask me about anything unclear before you start. Leave non-critical points as TODOs.}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \icon{\faComments}\enspace\textbf{Sparring partner}
+      \begin{itemize}\small
+        \item Test ideas before taking them to colleagues: does the argument hold up against what we wrote elsewhere, and against the literature?
+        \item Often points out what you have overlooked, such as a contradiction with an earlier section.
+      \end{itemize}
+      \prompt{I think we should reframe the discussion in Section 5 as follows: \dots{} Assess this critically against the rest of the paper and the literature in literature/.}
+    \end{column}
+  \end{columns}
+  \vspace{0.2em}
+  {\small Working interactively on one part is fine too, but most tasks can run asynchronously.}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Pitfalls}
+  \label{pitfalls}
+  \begin{itemize}
+    \item \icon{\faBook}\enspace\textbf{Made-up or outdated citations.} My rule in \file{instructions.md}:
+  \end{itemize}
+  \prompt{NEVER cite (add to the .bib file) any document that is not in literature/.}
+  \begin{itemize}
+    \item[] The agent may suggest literature, but I look up and download the papers myself. This way I have the real, latest versions, and cite only what I chose.
+    \item \icon{\faSave}\enspace\textbf{Backups.} The agent writes into your files. Keep file history (Dropbox, OneDrive, \dots), and read permission prompts before approving them.
+    \item \icon{\faLock}\enspace\textbf{Confidential data.} Check data licences and your institution's rules before giving the agent access to confidential data.
+  \end{itemize}
+\end{frame}
+
+% ---------------------------------------------------------------
+\section{Jump start}
+
+\begin{frame}{Putting it together: the jump start}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item Create a folder for the project.
+        \item Put in the background files: literature, data, a writing sample, your draft or notes.
+        \item Write \file{instructions.md} (10--15 minutes).
+        \item Open the agent in that folder (e.g.\ VS Code with Claude Code).
+        \item Tell it to read the instructions, and take it from there.
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      \textbf{First prompts}
+      \prompt{Read instructions.md. Plan the subtasks and ask me about anything unclear before you start.}
+      \prompt{Read status.md and continue where we left off.}
+      \prompt{Do a thorough grammar, style and consistency check of paper.tex.}
+    \end{column}
+  \end{columns}
+  \vspace{0.8em}
+  \begin{keybox}
+    \icon{\faComments}\enspace Questions, or a workflow that works better for you? Happy to discuss: \email
+  \end{keybox}
+\end{frame}
+
+\end{document}

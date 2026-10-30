@@ -1,0 +1,19 @@
+# Raw voice transcripts (private)
+recordings/
+instr-start.txt
+
+# LaTeX build files
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Stata logs
+*.smcl
+examples/*.log
