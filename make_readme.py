@@ -58,7 +58,9 @@ def inline(s, labels):
     s = replace_cmd(s, "textcolor", lambda c, t: t, nargs=2)
     s = replace_cmd(s, "href", lambda u, t: f"[{t}]({u})", nargs=2)
     s = replace_cmd(s, "url", lambda u: f"<{u}>")
-    s = s.replace("\\email", "[simon.martin@univie.ac.at](mailto:simon.martin@univie.ac.at)")
+    s = s.replace("\\repourl", "[github.com/simonmartinecon/jumpstart-ai]"
+                  "(https://github.com/simonmartinecon/jumpstart-ai)")
+    s = s.replace("\\email","[simon.martin@univie.ac.at](mailto:simon.martin@univie.ac.at)")
     s = replace_cmd(s, "textbf", lambda t: f"**{t}**")
     s = replace_cmd(s, "textit", lambda t: f"*{t}*")
     s = replace_cmd(s, "emph", lambda t: f"*{t}*")
@@ -69,7 +71,8 @@ def inline(s, labels):
                  ("\\_", "_"), ("e.g.\\ ", "e.g. "), ("\\enspace", " "),
                  ("$\\rightarrow$", "→"), ("~", " "), ("\\par", "")]:
         s = s.replace(a, b)
-    s = re.sub(r"\\(small|footnotesize|scriptsize|tiny|smallskip|medskip|bigskip)\b", "", s)
+    s = re.sub(r"\\(small|footnotesize|scriptsize|tiny|normalsize|Huge|centering|"
+               r"smallskip|medskip|bigskip)\b", "", s)
     s = re.sub(r"\\vspace\*?\{[^}]*\}", "", s)
     s = re.sub(r"\{\s*([^{}]*?)\s*\}", r"\1", s)  # leftover grouping braces
     return re.sub(r"[ \t]+", " ", s).strip()
@@ -122,7 +125,10 @@ def frame_body(body, labels, seen):
     body = re.sub(r"\\input\{([^}]*)\}", lambda m: dirtree(m.group(1)), body)
     body = re.sub(r"\\lstinputlisting(\[[^\]]*\])?\{([^}]*)\}",
                   lambda m: listing(m.group(1), m.group(2), seen), body)
-    body = re.sub(r"\\(begin|end)\{columns?\}(\[[^\]]*\])?(\{[^}]*\})?", "", body)
+    body = re.sub(r"\\(begin|end)\{(columns?|center|minipage)\}(\[[^\]]*\])?(\{[^}]*\})?", "", body)
+    body = re.sub(r"\\parbox(\[[^\]]*\])*\{[^}]*\}", "\\\\group", body)
+    body = replace_cmd(body, "group", lambda t: t)
+    body = re.sub(r"\\(centering|Huge|normalsize)\b", "", body)
 
     out, stack, in_code = [], [], False
     for line in body.split("\n"):

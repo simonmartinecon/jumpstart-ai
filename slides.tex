@@ -62,7 +62,7 @@
 
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \newcommand{\file}[1]{\texttt{#1}}
-\newcommand{\email}{\href{mailto:simon.martin@univie.ac.at}{simon.martin@univie.ac.at}}
+\newcommand{\email}{\mbox{\href{mailto:simon.martin@univie.ac.at}{simon.martin@univie.ac.at}}}
 \newcommand{\icon}[1]{\textcolor{accent}{#1}}
 \newcommand{\repourl}{\href{https://github.com/simonmartinecon/jumpstart-ai}{github.com/simonmartinecon/jumpstart-ai}}
 
@@ -94,7 +94,7 @@
     \item \textbf{For whom:} economists in academia, but much of this applies more widely.
     \item \textbf{Prerequisites:} almost none. To start on your project right away, you need a basic subscription (about 20~USD/month) with any AI provider.
     \item \textbf{Caveat:} this is my personal take in a field that changes very fast. It is what works for me, not a fixed recipe: adjust it to your own workflow and software.
-    \item \textbf{Meta:} these slides were made with an agent, following exactly the workflow they describe.
+    \item \textbf{Meta:} these slides were made with an agent, following exactly the workflow they describe. The full project folder is on GitHub (\repourl).
   \end{itemize}
   \vspace{0.5em}
   \begin{keybox}
@@ -147,7 +147,7 @@
 \begin{frame}{What it is, and what it isn't}
   \begin{columns}[T]
     \begin{column}{0.48\textwidth}
-      \icon{\faDice}\enspace\textbf{``Just a token-guessing machine?''}
+      \icon{\faQuestionCircle}\enspace\textbf{``Just a token-guessing machine?''}
       \begin{itemize}
         \item Technically, yes: it predicts the next piece of text.
         \item But predicting well at this scale means it can follow arguments, plan tasks and check proofs.
@@ -303,7 +303,7 @@
         \midrule
         Change the column order of Table~2 in paper.tex. & Change wage\_regs.do so that Table~2 comes out in this column order. \\
         \midrule
-        What does this coefficient imply in euros? (Then paste the answer.) & Add this calculation to the do-file, export the number, and use it in Section~4. \\
+        What does this coefficient imply in percent? (Then paste the answer.) & Add this calculation to the do-file, export the number, and use it in Section~4. \\
         \bottomrule
       \end{tabularx}
     \end{column}
@@ -323,14 +323,14 @@
         \toprule
         \textbf{Section} & \textbf{My typical content} \\
         \midrule
-        Scope      & We are writing a research paper in labour economics. \\
-        Literature & Read the papers in literature/. \\
+        Scope      & \textit{We are writing a research paper in labour economics.} \\
+        Literature & \textit{Read the papers in literature/.} \\
         Stages     & sub-steps, and how we proceed and interact (longer projects) \\
-        Output     & The main document is paper.tex. \\
+        Output     & \textit{The main document is paper.tex.} \\
         Software   & which software; where code, input and output files are \\
         Style      & a writing sample of mine in samples/: sets layout, language and tone \\
-        Checks     & At the end: grammar, language, style and consistency check. \\
-        Logging    & Record progress and TODOs in status.md; read it at the start of each session. \\
+        Checks     & \textit{At the end: grammar, language, style and consistency check.} \\
+        Logging    & \textit{Record progress and TODOs in status.md; read it at the start of each session.} \\
         \bottomrule
       \end{tabularx}
     \end{column}
@@ -353,7 +353,7 @@
       \lstinputlisting[linerange={1-21}]{instructions.md}
     \end{column}
     \begin{column}{0.49\textwidth}
-      \lstinputlisting[linerange={22-37}]{instructions.md}
+      \lstinputlisting[firstline=22]{instructions.md}
     \end{column}
   \end{columns}
 \end{frame}
@@ -367,7 +367,7 @@
       \icon{\faClock}\enspace\textbf{Asynchronous}
       \begin{itemize}\small
         \item Longer tasks run in the background: half an hour, a few hours, overnight. Run several agents on different projects; reconcile when they finish.
-        \item Settle all decisions up front, or defer non-critical ones as TODOs. Avoid: the agent stops after an hour with a question.
+        \item Settle all decisions up front, or defer non-critical ones as TODOs. What to avoid: after an hour, the agent stops to ask something you could have settled at the start.
       \end{itemize}
       \prompt{Plan the subtasks for this stage and ask me about anything unclear before you start. Leave non-critical points as TODOs.}
     \end{column}
@@ -406,7 +406,7 @@
     \begin{column}{0.5\textwidth}
       \begin{enumerate}
         \item Create a folder for the project.
-        \item Put in the background files: literature, data, a writing sample, your draft or notes.
+        \item Put in the context files: literature, data, a writing sample, your draft or notes.
         \item Write \file{instructions.md} (10--15 minutes).
         \item Open the agent in that folder (e.g.\ VS Code with Claude Code).
         \item Tell it to read the instructions, and take it from there.
@@ -423,6 +423,41 @@
   \begin{keybox}
     \icon{\faComments}\enspace Questions, or a workflow that works better for you? Happy to discuss: \email
   \end{keybox}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Get started now}
+  \begin{columns}[T]
+    \begin{column}{0.22\textwidth}
+      \centering
+      \parbox[c][1.3cm][c]{\linewidth}{\centering\Huge\icon{\faFolderPlus}}\par
+      \textbf{1. Create a folder}\par\smallskip
+      {\small one per project}
+    \end{column}
+    \begin{column}{0.22\textwidth}
+      \centering
+      \parbox[c][1.3cm][c]{\linewidth}{\centering\Huge\icon{\faCopy}}\par
+      \textbf{2. Put in the context files}\par\smallskip
+      {\small literature, data, notes, a writing sample}
+    \end{column}
+    \begin{column}{0.22\textwidth}
+      \centering
+      \parbox[c][1.3cm][c]{\linewidth}{\centering\Huge\icon{\faFileSignature}}\par
+      \textbf{3. Write \file{instructions.md}}\par\smallskip
+      {\small scope, output, stages, style}
+    \end{column}
+    \begin{column}{0.22\textwidth}
+      \centering
+      \parbox[c][1.3cm][c]{\linewidth}{\centering\Huge\icon{\faPlay}}\par
+      \textbf{4. Open the agent and prompt:}
+    \end{column}
+  \end{columns}
+  \vspace{1.5em}
+  \begin{center}
+    \begin{minipage}{0.5\textwidth}
+      \prompt{\normalsize Read the instructions.}
+    \end{minipage}
+  \end{center}
 \end{frame}
 
 \end{document}

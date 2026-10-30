@@ -7,18 +7,19 @@
 - Format: a self-contained slide deck to share (not a talk), so slides must be readable without a presenter.
 - Decided: 15–20 slides; audience has used chatbots but not agents; provider-neutral, with VS Code + Claude Code as one example; this project folder is the running example.
 - Stage 2 done: all sections agreed, plus additions, drops and design (minimal light blue). Everything recorded in `structure.md`.
-- Stage 3 settings: title "Jump-starting AI agents", subtitle "A practical quick start for economists"; Simon Martin, simon.martin@univie.ac.at, https://sites.google.com/view/simonmartinecon/, plus a link to the GitHub repo for these slides; 16:9; title slide shows "Version 0.1, October 2026". LaTeX (MiKTeX) is installed with fontawesome5, tcolorbox, listings, forest and dirtree.
-- Stage 3 first draft done: `slides.tex` compiled to `slides.pdf` (17 slides, no overflows). Examples are included from `examples/` (Stata snippet, `\input` snippet, two folder trees); slide 14 includes `instructions.md` itself.
-- Changes during Stage 3: "About these slides" now states objective, audience (academic economists, widely applicable) and prerequisites (a ~20 USD plan); new slide 5 "What it is, and what it isn't" (token-guessing machine; not a store of truth).
+- Stage 3 settings: title "Jump-starting AI agents", subtitle "A practical quick start for economists"; Simon Martin, simon.martin@univie.ac.at, https://sites.google.com/view/simonmartinecon/, plus the GitHub repo link; 16:9; title slide shows "Version 0.1, October 2026". LaTeX (MiKTeX) is installed with fontawesome5, tcolorbox, listings, forest and dirtree.
+- Stage 3 done: `slides.tex` compiled to `slides.pdf` (18 slides, no overflows). Examples are included from `examples/` (Stata snippet, `\input` snippet, two folder trees); slide 14 includes `instructions.md` itself.
+- Added during Stage 3: objective/audience/prerequisites on "About these slides"; slide 5 "What it is, and what it isn't" (token-guessing machine; not a store of truth); closing slide 18 "Get started now" (folder → context files → instructions.md → "Read the instructions.").
+- Stata example is runnable (Stata 15 at `C:\Program Files (x86)\Stata15\StataMP-64.exe`, run from `examples/` with `/e do wage_regs.do`). It uses the built-in `nlsw88` data and writes `examples/output/tables/wage_regs.tex`, which test-compiles in a minimal paper.
+- Git: branch `main`, commit email simon.martin@univie.ac.at. `.gitignore` excludes `recordings/`, `instr-start.txt` and LaTeX/Stata build files. Public repo: https://github.com/simonmartinecon/jumpstart-ai (remote `origin`), linked via `\repourl`.
+- `README.md` is generated from `slides.tex` by `make_readme.py` (run `python make_readme.py` after every change to the slides; never edit `README.md` by hand).
+- Final check done (grammar, style, flow, consistency with `background.md`). Fixed: slide 14 cut off at the end; email hyphenated on slide 17; "background files" vs "context files" (now "context files" throughout); outdated folder tree on slide 9; "in euros" → "in percent" (log wages); clearer "what to avoid" on slide 15; example sentences in italics on slide 13; GitHub link in the "Meta" point; gap on slide 5.
 
-- Stata example made runnable (Stata 15 at `C:\Program Files (x86)\Stata15\StataMP-64.exe`, run from `examples/` with `/e do wage_regs.do`). It uses the built-in `nlsw88` data and writes `examples/output/tables/wage_regs.tex`, which test-compiles in a minimal paper.
-- Git initialised locally (branch `main`, commit email simon.martin@univie.ac.at). `.gitignore` excludes `recordings/`, `instr-start.txt` and LaTeX/Stata build files. Public GitHub repo: https://github.com/simonmartinecon/jumpstart-ai (remote `origin`), linked on the title slide via `\repourl`.
-
-- New rule in `instructions.md`: `README.md` is a Markdown version of the slides. It is generated from `slides.tex` by `make_readme.py` (run `python make_readme.py` after every change to the slides; never edit `README.md` by hand).
-
-## Next
-- Review the first draft with Simon, then do the final checks (grammar, language, style, consistency with `background.md`).
+## Workflow after each change
+1. `latexmk -pdf slides.tex`
+2. `python make_readme.py`
+3. Commit and push.
 
 ## Open TODOs
-- Slide 14 (`instructions.md` in full) uses very small type; consider showing an excerpt instead.
-- Small extra gap under the left heading on slide 5.
+- Slide 14 (`instructions.md` in full) uses very small type; readable only when zoomed. Alternative: show an excerpt and link to the file on GitHub.
+- Slides 17 ("Putting it together") and 18 ("Get started now") overlap on purpose; merge them if the deck should be shorter.

@@ -14,7 +14,7 @@ Version 0.1, October 2026 · PDF version: [slides.pdf](slides.pdf)
 - **For whom:** economists in academia, but much of this applies more widely.
 - **Prerequisites:** almost none. To start on your project right away, you need a basic subscription (about 20 USD/month) with any AI provider.
 - **Caveat:** this is my personal take in a field that changes very fast. It is what works for me, not a fixed recipe: adjust it to your own workflow and software.
-- **Meta:** these slides were made with an agent, following exactly the workflow they describe.
+- **Meta:** these slides were made with an agent, following exactly the workflow they describe. The full project folder is on GitHub ([github.com/simonmartinecon/jumpstart-ai](https://github.com/simonmartinecon/jumpstart-ai)).
 
 > Happy to discuss with anyone, any time: [simon.martin@univie.ac.at](mailto:simon.martin@univie.ac.at)
 
@@ -124,15 +124,15 @@ my-paper/
 **These slides**
 
 ```text
-jumpstart-slides/
+jumpstart-ai/
   instructions.md           # the contract
   status.md                 # progress log
   background.md             # my notes
   recordings/               # voice transcripts
-  structure.md              # agreed outline
   examples/                 # code shown on slides
   slides.tex                # main document
   slides.pdf                # final output
+  README.md                 # generated from slides.tex
 ```
 
 ## Plain text for everything you work on
@@ -201,20 +201,20 @@ esttab using "output/tables/wage_regs.tex", ///
 | **Don't** | **Do** |
 |---|---|
 | Change the column order of Table 2 in paper.tex. | Change wage_regs.do so that Table 2 comes out in this column order. |
-| What does this coefficient imply in euros? (Then paste the answer.) | Add this calculation to the do-file, export the number, and use it in Section 4. |
+| What does this coefficient imply in percent? (Then paste the answer.) | Add this calculation to the do-file, export the number, and use it in Section 4. |
 
 ## `instructions.md`: the contract
 
 | **Section** | **My typical content** |
 |---|---|
-| Scope | We are writing a research paper in labour economics. |
-| Literature | Read the papers in literature/. |
+| Scope | *We are writing a research paper in labour economics.* |
+| Literature | *Read the papers in literature/.* |
 | Stages | sub-steps, and how we proceed and interact (longer projects) |
-| Output | The main document is paper.tex. |
+| Output | *The main document is paper.tex.* |
 | Software | which software; where code, input and output files are |
 | Style | a writing sample of mine in samples/: sets layout, language and tone |
-| Checks | At the end: grammar, language, style and consistency check. |
-| Logging | Record progress and TODOs in status.md; read it at the start of each session. |
+| Checks | *At the end: grammar, language, style and consistency check.* |
+| Logging | *Record progress and TODOs in status.md; read it at the start of each session.* |
 
 - Instead of long one-off prompts: one file that sets the scope and the rules.
 - **Format barely matters:** no syntax rules, .md or .txt. A little structure (headings) helps.
@@ -230,7 +230,7 @@ esttab using "output/tables/wage_regs.tex", ///
 **Asynchronous**
 
 - Longer tasks run in the background: half an hour, a few hours, overnight. Run several agents on different projects; reconcile when they finish.
-- Settle all decisions up front, or defer non-critical ones as TODOs. Avoid: the agent stops after an hour with a question.
+- Settle all decisions up front, or defer non-critical ones as TODOs. What to avoid: after an hour, the agent stops to ask something you could have settled at the start.
 
 > 💬 *Plan the subtasks for this stage and ask me about anything unclear before you start. Leave non-critical points as TODOs.*
 
@@ -256,7 +256,7 @@ Working interactively on one part is fine too, but most tasks can run asynchrono
 ## Putting it together: the jump start
 
 1. Create a folder for the project.
-1. Put in the background files: literature, data, a writing sample, your draft or notes.
+1. Put in the context files: literature, data, a writing sample, your draft or notes.
 1. Write `instructions.md` (10–15 minutes).
 1. Open the agent in that folder (e.g. VS Code with Claude Code).
 1. Tell it to read the instructions, and take it from there.
@@ -270,3 +270,21 @@ Working interactively on one part is fine too, but most tasks can run asynchrono
 > 💬 *Do a thorough grammar, style and consistency check of paper.tex.*
 
 > Questions, or a workflow that works better for you? Happy to discuss: [simon.martin@univie.ac.at](mailto:simon.martin@univie.ac.at)
+
+## Get started now
+
+**1. Create a folder**
+
+one per project
+
+**2. Put in the context files**
+
+literature, data, notes, a writing sample
+
+**3. Write `instructions.md`**
+
+scope, output, stages, style
+
+**4. Open the agent and prompt:**
+
+> 💬 *Read the instructions.*
