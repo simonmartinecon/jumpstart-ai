@@ -15,11 +15,12 @@
 - `README.md` is generated from `slides.tex` by `make_readme.py` (run `python make_readme.py` after every change to the slides; never edit `README.md` by hand).
 - Final check done (grammar, style, flow, consistency with `background.md`). Fixed: slide 14 cut off at the end; email hyphenated on slide 17; "background files" vs "context files" (now "context files" throughout); outdated folder tree on slide 9; "in euros" → "in percent" (log wages); clearer "what to avoid" on slide 15; example sentences in italics on slide 13; GitHub link in the "Meta" point; gap on slide 5.
 
+- Added: disclaimer at the bottom of the title slide (practical focus; ethics and data policies are up to the reader), also at the top of `README.md`; closing slide 19 "Thanks and further reading" (Anton Korinek, Scott Cunningham, Paul Goldsmith-Pinkham), which now carries the contact box (removed from slide 17). Slide 14 shows an excerpt of `instructions.md` (lines 1–10 and 12–20) with a link to the full file on GitHub; the README shows the same excerpt.
+
 ## Workflow after each change
 1. `latexmk -pdf slides.tex`
 2. `python make_readme.py`
 3. Commit and push.
 
 ## Open TODOs
-- Slide 14 (`instructions.md` in full) uses very small type; readable only when zoomed. Alternative: show an excerpt and link to the file on GitHub.
 - Slides 17 ("Putting it together") and 18 ("Get started now") overlap on purpose; merge them if the deck should be shorter.

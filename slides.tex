@@ -77,12 +77,16 @@
   \faGlobe\enspace \href{https://sites.google.com/view/simonmartinecon/}{sites.google.com/view/simonmartinecon}\\[2pt]
   \faGithub\enspace \repourl}
 \date{\footnotesize Version 0.1, October 2026}
+\newcommand{\disclaimer}{These slides focus on practical aspects. There is, of course, much discussion about the ethics of AI use (in writing and reviewing), data policies and more; assessing these is up to you.}
 
 \begin{document}
 
 % ---------------------------------------------------------------
 \begin{frame}[plain]
   \titlepage
+  \vfill
+  {\color{rulecol}\rule{\linewidth}{0.4pt}}\par
+  {\scriptsize\color{muted}\disclaimer\par}
 \end{frame}
 
 % ---------------------------------------------------------------
@@ -347,15 +351,17 @@
 
 % ---------------------------------------------------------------
 \begin{frame}[fragile]{Example: the \file{instructions.md} behind these slides}
-  \lstset{basicstyle=\ttfamily\fontsize{4.2}{5}\selectfont}
+  \lstset{basicstyle=\ttfamily\fontsize{5.5}{6.6}\selectfont}
   \begin{columns}[T]
     \begin{column}{0.49\textwidth}
-      \lstinputlisting[linerange={1-21}]{instructions.md}
+      \lstinputlisting[linerange={1-10}]{instructions.md}
     \end{column}
     \begin{column}{0.49\textwidth}
-      \lstinputlisting[firstline=22]{instructions.md}
+      \lstinputlisting[linerange={12-20}]{instructions.md}
     \end{column}
   \end{columns}
+  \vspace{0.5em}
+  {\fontsize{8}{10}\selectfont\icon{\faGithub}\enspace Excerpt. The full file is on GitHub: \href{https://github.com/simonmartinecon/jumpstart-ai/blob/main/instructions.md}{github.com/simonmartinecon/jumpstart-ai/blob/main/instructions.md}\par}
 \end{frame}
 
 % ---------------------------------------------------------------
@@ -419,10 +425,6 @@
       \prompt{Do a thorough grammar, style and consistency check of paper.tex.}
     \end{column}
   \end{columns}
-  \vspace{0.8em}
-  \begin{keybox}
-    \icon{\faComments}\enspace Questions, or a workflow that works better for you? Happy to discuss: \email
-  \end{keybox}
 \end{frame}
 
 % ---------------------------------------------------------------
@@ -458,6 +460,19 @@
       \prompt{\normalsize Read the instructions.}
     \end{minipage}
   \end{center}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Thanks and further reading}
+  \begin{itemize}
+    \item \textbf{Anton Korinek:} big thanks! A great source on using AI; I have benefited a lot from his talks and from interacting with him. His series of JEL articles on AI for economic research (latest: ``AI Agents for Economic Research'', 2025) is at \href{https://www.korinek.com/Home}{korinek.com}.
+    \item \textbf{Scott Cunningham:} Scott's Mixtape Substack, on causal inference and how AI agents change empirical research: \href{https://causalinf.substack.com}{causalinf.substack.com}.
+    \item \textbf{Paul Goldsmith-Pinkham:} great blog, Substack and video series: \href{https://paulgp.com/blog.html}{paulgp.com/blog.html}.
+  \end{itemize}
+  \vspace{0.8em}
+  \begin{keybox}
+    \icon{\faComments}\enspace Questions, or a workflow that works better for you? Happy to discuss: \email
+  \end{keybox}
 \end{frame}
 
 \end{document}

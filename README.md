@@ -8,6 +8,8 @@ Simon Martin · [simon.martin@univie.ac.at](mailto:simon.martin@univie.ac.at) ·
 
 Version 0.1, October 2026 · PDF version: [slides.pdf](slides.pdf)
 
+*These slides focus on practical aspects. There is, of course, much discussion about the ethics of AI use (in writing and reviewing), data policies and more; assessing these is up to you.*
+
 ## About these slides
 
 - **Objective:** get you started on one of your own projects right after skimming these slides.
@@ -223,7 +225,32 @@ esttab using "output/tables/wage_regs.tex", ///
 
 ## Example: the `instructions.md` behind these slides
 
-→ See [instructions.md](instructions.md).
+```markdown
+# Instructions
+
+## Scope
+We are writing an overview on jump-starting AI agents for economists. The main goal is to help other economists get started as quickly as possible: only the bare-bones essentials to keep in mind, with no unnecessary detail, background information or technical lingo. Readers should then be able to start working on a project of their own right away.
+
+Caveat to convey throughout: this is my personal take in a very rapidly changing field. The workflow and approach are what work for me, and I'm happy to discuss them with anyone at any time.
+
+## Background material
+- `background.md`: my collection of ideas and thoughts I'd like to convey. They are not yet well structured.
+- `recordings/`: the raw voice transcripts behind parts of `background.md`. Use them for reference only; `background.md` is the cleaned-up version.
+```
+
+```markdown
+## Tasks and stages
+1. **Structure:** read `background.md` and propose how to bring the content into a proper structure: categories, sections and sub-bullets, in a sensible order. Do not write the presentation yet.
+2. **Deliberate:** we walk through the proposed structure together and agree on the basic layout and on what should be conveyed. Where useful, suggest:
+   - additional details or points I may have missed
+   - concrete examples, e.g. short code snippets, an example `instructions.md`, or an example file/directory structure for a project folder
+   - content that could be dropped or merged because it is not essential for a quick start
+3. **Presentation:** once the structure is agreed, produce the slides (see below).
+
+Before starting a stage, plan the subtasks and ask me about anything unclear up front. Anything non-critical can be left as a TODO note for later.
+```
+
+Excerpt. The full file is on GitHub: [github.com/simonmartinecon/jumpstart-ai/blob/main/instructions.md](https://github.com/simonmartinecon/jumpstart-ai/blob/main/instructions.md)
 
 ## Ways of working
 
@@ -269,8 +296,6 @@ Working interactively on one part is fine too, but most tasks can run asynchrono
 
 > 💬 *Do a thorough grammar, style and consistency check of paper.tex.*
 
-> Questions, or a workflow that works better for you? Happy to discuss: [simon.martin@univie.ac.at](mailto:simon.martin@univie.ac.at)
-
 ## Get started now
 
 **1. Create a folder**
@@ -288,3 +313,11 @@ scope, output, stages, style
 **4. Open the agent and prompt:**
 
 > 💬 *Read the instructions.*
+
+## Thanks and further reading
+
+- **Anton Korinek:** big thanks! A great source on using AI; I have benefited a lot from his talks and from interacting with him. His series of JEL articles on AI for economic research (latest: "AI Agents for Economic Research", 2025) is at [korinek.com](https://www.korinek.com/Home).
+- **Scott Cunningham:** Scott's Mixtape Substack, on causal inference and how AI agents change empirical research: [causalinf.substack.com](https://causalinf.substack.com).
+- **Paul Goldsmith-Pinkham:** great blog, Substack and video series: [paulgp.com/blog.html](https://paulgp.com/blog.html).
+
+> Questions, or a workflow that works better for you? Happy to discuss: [simon.martin@univie.ac.at](mailto:simon.martin@univie.ac.at)

@@ -50,6 +50,7 @@ def anchor(title):
 
 def inline(s, labels):
     """Convert inline LaTeX markup to Markdown."""
+    s = re.sub(r"\\fontsize\{[^}]*\}\{[^}]*\}\\selectfont", "", s)
     s = re.sub(r"slides?~(?=\\ref)", "", s)
     s = replace_cmd(s, "ref", lambda k: f"[{labels[k]}](#{anchor(labels[k])})")
     s = re.sub(r"\\label\{[^}]*\}", "", s)
@@ -102,13 +103,12 @@ def dirtree(path):
 
 
 def listing(opts, path, seen):
-    if path.endswith(".md"):  # whole documents: link instead of pasting
-        if path in seen:
-            return ""
-        seen.add(path)
-        return f"\n→ See [{path}]({path}).\n"
-    lang = {".do": "stata", ".tex": "latex", ".py": "python"}.get(Path(path).suffix, "")
-    return f"\n```{lang}\n{(ROOT / path).read_text().rstrip()}\n```\n"
+    lines = (ROOT / path).read_text().rstrip().split("\n")
+    if m := re.search(r"linerange=\{?(\d+)-(\d+)", opts or ""):
+        lines = lines[int(m.group(1)) - 1:int(m.group(2))]
+    lang = {".do": "stata", ".tex": "latex", ".py": "python",
+            ".md": "markdown"}.get(Path(path).suffix, "")
+    return "\n```" + lang + "\n" + "\n".join(lines) + "\n```\n"
 
 
 def frame_body(body, labels, seen):
@@ -198,6 +198,8 @@ def main():
         f"{inline(macro('author'), {})} · \\email · "
         "[sites.google.com/view/simonmartinecon](https://sites.google.com/view/simonmartinecon/)",
         f"{date} · PDF version: [slides.pdf](slides.pdf)",
+        "*" + inline(braced(preamble, preamble.index("\\newcommand{\\disclaimer}{")
+                            + len("\\newcommand{\\disclaimer}"))[0], {}) + "*",
     ]
     md = [inline(x, labels) if "\\email" in x else x for x in md]
 
