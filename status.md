@@ -31,4 +31,4 @@
 3. Commit and push.
 
 ## Open TODOs
-- Slides 20 ("Putting it together") and 21 ("Get started now") overlap on purpose; merge them if the deck should be shorter.
+- None. (Slides 20 "Putting it together" and 21 "Get started now" overlap on purpose; Simon decided to keep both.)
