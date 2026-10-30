@@ -104,6 +104,24 @@ Version 0.1, October 2026 · PDF version: [slides.pdf](slides.pdf)
 - **Memory drifts:** as a session grows, older or partly contradictory instructions get lost. Don't assume everything you ever said is still respected; now and then ask it to re-read the instructions or double-check.
 - **Fresh sessions:** start new sessions rather than one endless chat. Let the agent record progress and open points in `status.md`, and read it at the start of each session.
 
+## A powerful tool, not a substitute for you
+
+**Used wisely: a very powerful tool**
+
+- Used properly, it can do a lot of the work, and do it fast.
+- It can also sharpen your own understanding: let it explain a method, a proof step or a piece of code, and let it challenge your arguments.
+
+> 💬 *Walk me through what you changed in analysis.do, and why.*
+
+**Not: "it does it all for me"**
+
+- Don't make yourself redundant.
+- Stay on top of what is happening: understand every step, table and argument, as you would with an RA's work.
+
+> 💬 *Explain step by step why this estimator is consistent under our assumptions.*
+
+> Rule of thumb: you should be able to explain and defend every part of the output yourself.
+
 ## Project = folder
 
 - Agents work in **projects**, and a project is simply a folder on your computer.

@@ -17,6 +17,8 @@
 
 - Added: disclaimer at the bottom of the title slide (practical focus; ethics and data policies are up to the reader), also at the top of `README.md`; closing slide 19 "Thanks and further reading" (Anton Korinek, Scott Cunningham, Paul Goldsmith-Pinkham), which now carries the contact box (removed from slide 17). Slide 14 shows an excerpt of `instructions.md` (lines 1–10 and 12–20) with a link to the full file on GitHub; the README shows the same excerpt.
 
+- Added slide 9 "A powerful tool, not a substitute for you" (after "You stay in charge"): powerful if used wisely, sharpens your understanding; but don't make yourself redundant, stay on top of every step as with an RA. Deck is now 20 slides.
+
 ## Workflow after each change
 1. `latexmk -pdf slides.tex`
 2. `python make_readme.py`
