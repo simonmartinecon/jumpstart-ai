@@ -19,6 +19,8 @@
 
 - Added slide 9 "A powerful tool, not a substitute for you" (after "You stay in charge"): powerful if used wisely, sharpens your understanding; but don't make yourself redundant, stay on top of every step as with an RA. Deck is now 20 slides.
 
+- URLs on the thanks slide now shown in full (https://...) via `\link`. `structure.md` now starts with the final 20-slide outline. Language check of the new slides (disclaimer, slide 9, slide 20) done.
+
 ## Workflow after each change
 1. `latexmk -pdf slides.tex`
 2. `python make_readme.py`

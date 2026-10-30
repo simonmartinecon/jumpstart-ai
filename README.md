@@ -334,8 +334,11 @@ scope, output, stages, style
 
 ## Thanks and further reading
 
-- **Anton Korinek:** big thanks! A great source on using AI; I have benefited a lot from his talks and from interacting with him. His series of JEL articles on AI for economic research (latest: "AI Agents for Economic Research", 2025) is at [korinek.com](https://www.korinek.com/Home).
-- **Scott Cunningham:** Scott's Mixtape Substack, on causal inference and how AI agents change empirical research: [causalinf.substack.com](https://causalinf.substack.com).
-- **Paul Goldsmith-Pinkham:** great blog, Substack and video series: [paulgp.com/blog.html](https://paulgp.com/blog.html).
+- **Anton Korinek:** big thanks! A great source on using AI; I have benefited a lot from his talks and from interacting with him. His series of JEL articles on AI for economic research (latest: "AI Agents for Economic Research", 2025):
+  <https://www.korinek.com/Home>
+- **Scott Cunningham:** Scott's Mixtape Substack, on causal inference and how AI agents change empirical research:
+  <https://causalinf.substack.com>
+- **Paul Goldsmith-Pinkham:** great blog, Substack and video series:
+  <https://paulgp.com/blog.html>
 
 > Questions, or a workflow that works better for you? Happy to discuss: [simon.martin@univie.ac.at](mailto:simon.martin@univie.ac.at)

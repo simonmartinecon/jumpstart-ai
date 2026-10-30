@@ -1,3 +1,29 @@
+# Structure
+
+## Final deck as built (20 slides, version 0.1)
+1. Title (with disclaimer: practical focus; ethics and data policies up to the reader)
+2. About these slides (objective, audience, prerequisites, caveat, meta)
+3. Chatbot vs agent
+4. "Coding agent": not just for coding (misconceptions + example tasks)
+5. What it is, and what it isn't (token-guessing machine; not a store of truth)
+6. What you need (subscription, software, setup; settings)
+7. Your agent is your research assistant
+8. You stay in charge
+9. A powerful tool, not a substitute for you
+10. Project = folder
+11. Plain text for everything you work on
+12. No copy/paste
+13. Script everything (Stata example + do/don't)
+14. `instructions.md`: the contract
+15. Example: the `instructions.md` behind these slides (excerpt + GitHub link)
+16. Ways of working (asynchronous; sparring partner)
+17. Pitfalls (citations, backups, confidential data)
+18. Putting it together: the jump start
+19. Get started now
+20. Thanks and further reading
+
+The sections below document the planning in Stages 1 and 2.
+
 # Proposed structure (Stage 1, draft for deliberation)
 
 Decisions so far: a self-contained slide deck to share (not a talk); 15–20 slides; audience has used chatbots but not agents; principles provider-neutral, with VS Code + Claude Code as one example setup; this project folder serves as the running example.

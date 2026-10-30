@@ -51,6 +51,7 @@ def anchor(title):
 def inline(s, labels):
     """Convert inline LaTeX markup to Markdown."""
     s = re.sub(r"\\fontsize\{[^}]*\}\{[^}]*\}\\selectfont", "", s)
+    s = re.sub(r"\\\\\s*$", "", s)  # manual line break at end of line
     s = re.sub(r"slides?~(?=\\ref)", "", s)
     s = replace_cmd(s, "ref", lambda k: f"[{labels[k]}](#{anchor(labels[k])})")
     s = re.sub(r"\\label\{[^}]*\}", "", s)
@@ -59,6 +60,7 @@ def inline(s, labels):
     s = replace_cmd(s, "textcolor", lambda c, t: t, nargs=2)
     s = replace_cmd(s, "href", lambda u, t: f"[{t}]({u})", nargs=2)
     s = replace_cmd(s, "url", lambda u: f"<{u}>")
+    s = replace_cmd(s, "link", lambda u: f"<{u}>")
     s = s.replace("\\repourl", "[github.com/simonmartinecon/jumpstart-ai]"
                   "(https://github.com/simonmartinecon/jumpstart-ai)")
     s = s.replace("\\email","[simon.martin@univie.ac.at](mailto:simon.martin@univie.ac.at)")
