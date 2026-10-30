@@ -8,7 +8,7 @@ Simon Martin · [simon.martin@univie.ac.at](mailto:simon.martin@univie.ac.at) ·
 
 Version 0.1, October 2026 · PDF version: [slides.pdf](slides.pdf)
 
-*These slides focus on practical aspects. There is, of course, much discussion about the ethics of AI use (in writing and reviewing), data policies and more; assessing these is up to you.*
+*These slides focus on the practical aspects of using AI agents. Ethical questions (AI use in writing and reviewing), data policies and copyright are beyond their scope: check the rules of your institution, journals and funders.*
 
 ## About these slides
 
@@ -16,9 +16,8 @@ Version 0.1, October 2026 · PDF version: [slides.pdf](slides.pdf)
 - **For whom:** economists in academia, but much of this applies more widely.
 - **Prerequisites:** almost none. To start on your project right away, you need a basic subscription (about 20 USD/month) with any AI provider.
 - **Caveat:** this is my personal take in a field that changes very fast. It is what works for me, not a fixed recipe: adjust it to your own workflow and software.
-- **Meta:** these slides were made with an agent, following exactly the workflow they describe. The full project folder is on GitHub ([github.com/simonmartinecon/jumpstart-ai](https://github.com/simonmartinecon/jumpstart-ai)).
 
-> Happy to discuss with anyone, any time: [simon.martin@univie.ac.at](mailto:simon.martin@univie.ac.at)
+> Happy to discuss details any time: just send me an email ([simon.martin@univie.ac.at](mailto:simon.martin@univie.ac.at)).
 
 ## Chatbot vs agent
 
@@ -52,7 +51,9 @@ Version 0.1, October 2026 · PDF version: [slides.pdf](slides.pdf)
 
 > 💬 *Add clustered standard errors to all regressions in code/analysis.do.*
 
-## What it is, and what it isn't
+## The model behind the agent: what it is, and isn't
+
+Every chatbot and agent runs on a large language model (LLM). The agent adds access to your files and tools.
 
 **"Just a token-guessing machine?"**
 
@@ -65,14 +66,14 @@ Version 0.1, October 2026 · PDF version: [slides.pdf](slides.pdf)
 - It is not a database, and not Wikipedia.
 - It reconstructs facts rather than looking them up, so they can be wrong, outdated or invented (citations!).
 
-> Strong at working with what you give it, weak at recalling facts. So provide the sources (literature/, data/), and let it compute in code instead of answering from memory (see [Script everything](#script-everything) and [Pitfalls](#pitfalls)).
+> The model is strong at working with what you give it, weak at recalling facts. So provide the sources (literature/, data/), and let the agent compute in code instead of answering from memory (see [Script everything](#script-everything) and [Pitfalls](#pitfalls)).
 
 ## What you need
 
 **Getting started**
 
-- **Subscription:** any basic plan at about 20 USD/month (Claude, ChatGPT/Codex, Gemini, ...). Free plans are usually too limited; 200 USD plans are rarely needed. The provider matters less than you might think.
-- **Software:** an editor with the agent built in, e.g. VS Code with the Claude Code extension (my setup).
+- **Subscription:** any basic plan at about 20 USD/month (Claude, ChatGPT/Codex, Gemini, ...). Free plans are usually too limited; 200 USD plans are rarely needed. Any provider will do.
+- **Software:** an editor with the agent built in, e.g. VS Code with the Claude Code extension (my setup). There, you also edit your .tex, .md, .do and other plain-text files yourself.
 - **Setup:** ask the agent to install or explain LaTeX, Stata paths etc., and to convert existing .docx/.pdf drafts to .tex/.md once.
 
 **Settings**
@@ -81,9 +82,31 @@ Version 0.1, October 2026 · PDF version: [slides.pdf](slides.pdf)
 - **Effort:** medium for most tasks; it trades depth against speed and tokens. High only for occasional thorough checks.
 - **Tokens:** the 20 USD plan suffices for most daily use. What eats tokens: many parallel web searches, and binary files (.docx, .xlsx, .pdf) instead of plain text.
 
+## The basic mindset
+
+**Your agent is your research assistant**
+
+Very capable, given context and clear instructions. You stay in charge.
+
+→ [Your agent is your research assistant](#your-agent-is-your-research-assistant) and [You stay in charge](#you-stay-in-charge)
+
+**A powerful tool, not a substitute**
+
+Use it to work faster and to sharpen your understanding, not to do your thinking.
+
+→ [A powerful tool, not a substitute for you](#a-powerful-tool-not-a-substitute-for-you)
+
+**Project = folder**
+
+One folder holds everything the agent needs, and you return to it each time.
+
+→ [Project = folder](#project--folder)
+
+> After the mindset, a few practical rules: plain text, no copy/paste, script everything.
+
 ## Your agent is your research assistant
 
-- Extremely capable, but only as good as the context you give it.
+- Very capable, but only as good as the context you give it.
 - Your job, as with any new RA:
 
   - **Context:** background, related literature, your terminology. A brilliant RA with a physics background needs to know how you use certain terms.

@@ -45,14 +45,16 @@ def replace_cmd(s, cmd, fn, nargs=1):
 
 def anchor(title):
     a = re.sub(r"[^\w\- ]", "", title.lower()).strip()
-    return a.replace(" ", "-")
+    return a.replace(" ", "\x01").replace("-", "\x01")  # "-" restored at the end of inline()
 
 
 def inline(s, labels):
     """Convert inline LaTeX markup to Markdown."""
     s = re.sub(r"\\fontsize\{[^}]*\}\{[^}]*\}\\selectfont", "", s)
     s = re.sub(r"\\\\\s*$", "", s)  # manual line break at end of line
+    s = re.sub(r"\\color\{[^}]*\}", "", s)
     s = re.sub(r"slides?~(?=\\ref)", "", s)
+    s = re.sub(r"(\\ref\{[^}]*\})--(?=\\ref)", r"\1 and ", s)
     s = replace_cmd(s, "ref", lambda k: f"[{labels[k]}](#{anchor(labels[k])})")
     s = re.sub(r"\\label\{[^}]*\}", "", s)
     s = replace_cmd(s, "icon", lambda a: "")
@@ -78,7 +80,7 @@ def inline(s, labels):
                r"smallskip|medskip|bigskip)\b", "", s)
     s = re.sub(r"\\vspace\*?\{[^}]*\}", "", s)
     s = re.sub(r"\{\s*([^{}]*?)\s*\}", r"\1", s)  # leftover grouping braces
-    return re.sub(r"[ \t]+", " ", s).strip()
+    return re.sub(r"[ \t]+", " ", s).strip().replace("\x01", "-")
 
 
 def table(body, labels):

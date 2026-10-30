@@ -21,6 +21,8 @@
 
 - URLs on the thanks slide now shown in full (https://...) via `\link`. `structure.md` now starts with the final 20-slide outline. Language check of the new slides (disclaimer, slide 9, slide 20) done.
 
+- Restructuring: new disclaimer wording; "Meta" bullet removed from slide 2 (by Simon), new contact-box text; slide 5 retitled "The model behind the agent" (LLM vs agent); slide 6 "Software" mentions editing plain-text files yourself; new overview slide 7 "The basic mindset" (RA incl. "you stay in charge", tool not substitute, project = folder); plain text, no copy/paste and script everything form the "Practical rules" section. Structure and consistency checked; deck is 21 slides, no overflows. Final outline in `structure.md`.
+
 ## Workflow after each change
 1. `latexmk -pdf slides.tex`
 2. `python make_readme.py`
