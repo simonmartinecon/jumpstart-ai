@@ -25,6 +25,7 @@ Whenever anything is unclear, ask me via AskUserQuestion with options I can clic
 - A LaTeX Beamer presentation, `slides.tex`, compiled to `slides.pdf` at the end.
 - Minimal layout. Where useful, use a few icons, light blue colouring, and structuring elements such as two-column/table layouts. Make a suggestion to me before committing to a design.
 - Keep all text in the `.tex` source. Any figures, tables or code examples should be generated or included from files, not pasted in by hand.
+- `README.md` (shown on the GitHub repo page): a Markdown version of the Beamer slides, kept in sync with `slides.tex`.
 
 ## Style
 - Plain, concise and practical, aimed at economists rather than programmers.

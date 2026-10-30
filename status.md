@@ -14,6 +14,8 @@
 - Stata example made runnable (Stata 15 at `C:\Program Files (x86)\Stata15\StataMP-64.exe`, run from `examples/` with `/e do wage_regs.do`). It uses the built-in `nlsw88` data and writes `examples/output/tables/wage_regs.tex`, which test-compiles in a minimal paper.
 - Git initialised locally (branch `main`, commit email simon.martin@univie.ac.at). `.gitignore` excludes `recordings/`, `instr-start.txt` and LaTeX/Stata build files. Public GitHub repo: https://github.com/simonmartinecon/jumpstart-ai (remote `origin`), linked on the title slide via `\repourl`.
 
+- New rule in `instructions.md`: `README.md` is a Markdown version of the slides. It is generated from `slides.tex` by `make_readme.py` (run `python make_readme.py` after every change to the slides; never edit `README.md` by hand).
+
 ## Next
 - Review the first draft with Simon, then do the final checks (grammar, language, style, consistency with `background.md`).
 
