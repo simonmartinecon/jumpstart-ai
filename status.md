@@ -11,11 +11,12 @@
 - Stage 3 first draft done: `slides.tex` compiled to `slides.pdf` (17 slides, no overflows). Examples are included from `examples/` (Stata snippet, `\input` snippet, two folder trees); slide 14 includes `instructions.md` itself.
 - Changes during Stage 3: "About these slides" now states objective, audience (academic economists, widely applicable) and prerequisites (a ~20 USD plan); new slide 5 "What it is, and what it isn't" (token-guessing machine; not a store of truth).
 
+- Stata example made runnable (Stata 15 at `C:\Program Files (x86)\Stata15\StataMP-64.exe`, run from `examples/` with `/e do wage_regs.do`). It uses the built-in `nlsw88` data and writes `examples/output/tables/wage_regs.tex`, which test-compiles in a minimal paper.
+- Git initialised locally (branch `main`, commit email simon.martin@univie.ac.at). `.gitignore` excludes `recordings/`, `instr-start.txt` and LaTeX/Stata build files. Public GitHub repo: https://github.com/simonmartinecon/jumpstart-ai (remote `origin`), linked on the title slide via `\repourl`.
+
 ## Next
 - Review the first draft with Simon, then do the final checks (grammar, language, style, consistency with `background.md`).
 
 ## Open TODOs
-- Set up the GitHub repo for these slides; add its URL via `\repourl` in `slides.tex` (shows a red TODO until then).
-- The Stata snippet in `examples/wage_regs.do` is illustrative and was not run (Stata is not installed here).
 - Slide 14 (`instructions.md` in full) uses very small type; consider showing an excerpt instead.
 - Small extra gap under the left heading on slide 5.
