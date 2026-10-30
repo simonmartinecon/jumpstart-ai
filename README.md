@@ -17,7 +17,7 @@ Version 0.1, October 2026 · PDF version: [slides.pdf](slides.pdf)
 - **Prerequisites:** almost none. To start on your project right away, you need a basic subscription (about 20 USD/month) with any AI provider.
 - **Caveat:** this is my personal take in a field that changes very fast. It is what works for me, not a fixed recipe: adjust it to your own workflow and software.
 
-> Happy to discuss details any time: just send me an email ([simon.martin@univie.ac.at](mailto:simon.martin@univie.ac.at)).
+> Happy to discuss details any time: just send me an email.
 
 ## Chatbot vs agent
 
@@ -66,7 +66,7 @@ Every chatbot and agent runs on a large language model (LLM). The agent adds acc
 - It is not a database, and not Wikipedia.
 - It reconstructs facts rather than looking them up, so they can be wrong, outdated or invented (citations!).
 
-> The model is strong at working with what you give it, weak at recalling facts. So provide the sources (literature/, data/), and let the agent compute in code instead of answering from memory (see [Script everything](#script-everything) and [Pitfalls](#pitfalls)).
+> The model is strong at working with what you give it, weak at recalling facts. So provide the sources (literature/, data/), and let the agent compute in code instead of answering from memory.
 
 ## What you need
 
@@ -88,28 +88,20 @@ Every chatbot and agent runs on a large language model (LLM). The agent adds acc
 
 Very capable, given context and clear instructions. You stay in charge.
 
-→ [Your agent is your research assistant](#your-agent-is-your-research-assistant) and [You stay in charge](#you-stay-in-charge)
-
 **A powerful tool, not a substitute**
 
 Use it to work faster and to sharpen your understanding, not to do your thinking.
 
-→ [A powerful tool, not a substitute for you](#a-powerful-tool-not-a-substitute-for-you)
-
 **Project = folder**
 
 One folder holds everything the agent needs, and you return to it each time.
-
-→ [Project = folder](#project--folder)
-
-> After the mindset, a few practical rules: plain text, no copy/paste, script everything.
 
 ## Your agent is your research assistant
 
 - Very capable, but only as good as the context you give it.
 - Your job, as with any new RA:
 
-  - **Context:** background, related literature, your terminology. A brilliant RA with a physics background needs to know how you use certain terms.
+  - **Context:** background, related literature, your terminology. A brilliant RA with a physics background needs to know how certain terms are used in economics.
   - **Instructions:** what to do, which output you expect, and in which file.
   - **Unclear points:** say how to handle them, for example:
 
@@ -125,7 +117,7 @@ One folder holds everything the agent needs, and you return to it each time.
 - **Verify:** read and check everything, and leave enough time for it at the end. AI slop shows.
 - A second agent can cross-check for you, but the responsibility stays with you.
 - **Memory drifts:** as a session grows, older or partly contradictory instructions get lost. Don't assume everything you ever said is still respected; now and then ask it to re-read the instructions or double-check.
-- **Fresh sessions:** start new sessions rather than one endless chat. Let the agent record progress and open points in `status.md`, and read it at the start of each session.
+- **Fresh sessions:** start new sessions rather than one endless chat. Let the agent record progress and open points in `status.md`, and have it read `instructions.md` and `status.md` at the start of each session.
 
 ## A powerful tool, not a substitute for you
 
@@ -244,25 +236,26 @@ esttab using "output/tables/wage_regs.tex", ///
 | **Don't** | **Do** |
 |---|---|
 | Change the column order of Table 2 in paper.tex. | Change wage_regs.do so that Table 2 comes out in this column order. |
-| What does this coefficient imply in percent? (Then paste the answer.) | Add this calculation to the do-file, export the number, and use it in Section 4. |
+| What does this coefficient imply in percent? (Then paste the answer.) | Add this calculation to the do-file, export the number, and use this in your document. |
 
 ## `instructions.md`: the contract
 
 | **Section** | **My typical content** |
 |---|---|
-| Scope | *We are writing a research paper in labour economics.* |
+| Scope | *We are writing an academic research paper in economics.* |
 | Literature | *Read the papers in literature/.* |
 | Stages | sub-steps, and how we proceed and interact (longer projects) |
 | Output | *The main document is paper.tex.* |
 | Software | which software; where code, input and output files are |
-| Style | a writing sample of mine in samples/: sets layout, language and tone |
+| Style | a writing sample of mine in samples/: sets layout, language and tone ([Language and tone](#language-and-tone)) |
 | Checks | *At the end: grammar, language, style and consistency check.* |
-| Logging | *Record progress and TODOs in status.md; read it at the start of each session.* |
+| Logging | *Record progress and open TODOs in status.md.* |
 
 - Instead of long one-off prompts: one file that sets the scope and the rules.
 - **Format barely matters:** no syntax rules, .md or .txt. A little structure (headings) helps.
-- **Why bother:** 10–15 minutes of writing forces you to think through background, deliverables and sub-steps, and tells your RA clearly what to do.
-- Extend it as you go.
+- **Why bother:** 10–15 minutes of writing forces you to think through background, deliverables and sub-steps, and tells your RA clearly what to do. Extend it as you go.
+
+> **Every session starts here:** the agent reads `instructions.md` and `status.md` and is back in full context.
 
 ## Example: the `instructions.md` behind these slides
 
@@ -293,6 +286,24 @@ Before starting a stage, plan the subtasks and ask me about anything unclear up 
 
 Excerpt. The full file is on GitHub: [github.com/simonmartinecon/jumpstart-ai/blob/main/instructions.md](https://github.com/simonmartinecon/jumpstart-ai/blob/main/instructions.md)
 
+## Language and tone
+
+**The problem**
+
+- LLM writing off the shelf often sounds unnatural: generic phrasing, filler, overused buzzwords.
+- It certainly does not sound like you, nor like the papers in your field.
+- Readers notice: AI slop shows.
+
+**Solutions**
+
+- **Writing sample:** put one or two of your own papers in `samples/`.
+- **Instruct it explicitly** to match your tone and style (in `instructions.md`).
+- **Field conventions:** let it follow the implicit conventions of the papers in `literature/`: notation, structure, how results are stated.
+
+> 💬 *Match the language and tone of my papers in samples/. Avoid generic phrasing and buzzwords.*
+
+> 💬 *Follow the conventions of the papers in literature/ for notation and for how propositions are stated.*
+
 ## Ways of working
 
 **Asynchronous**
@@ -304,7 +315,7 @@ Excerpt. The full file is on GitHub: [github.com/simonmartinecon/jumpstart-ai/bl
 
 **Sparring partner**
 
-- Test ideas before taking them to colleagues: does the argument hold up against what we wrote elsewhere, and against the literature?
+- Test ideas before taking them to colleagues or into actual writing: does the argument hold up against what we wrote elsewhere, and against the literature?
 - Often points out what you have overlooked, such as a contradiction with an earlier section.
 
 > 💬 *I think we should reframe the discussion in Section 5 as follows: ... Assess this critically against the rest of the paper and the literature in literature/.*

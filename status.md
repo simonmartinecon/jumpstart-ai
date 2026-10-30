@@ -23,10 +23,12 @@
 
 - Restructuring: new disclaimer wording; "Meta" bullet removed from slide 2 (by Simon), new contact-box text; slide 5 retitled "The model behind the agent" (LLM vs agent); slide 6 "Software" mentions editing plain-text files yourself; new overview slide 7 "The basic mindset" (RA incl. "you stay in charge", tool not substitute, project = folder); plain text, no copy/paste and script everything form the "Practical rules" section. Structure and consistency checked; deck is 21 slides, no overflows. Final outline in `structure.md`.
 
+- Simon's own edits to `slides.tex`; slide 15 key box "Every session starts here" (instructions.md + status.md restore the context), tighter table; slide 9 "Fresh sessions" names both files; new slide 17 "Language and tone" (off-the-shelf LLM writing sounds generic and not like you; solutions: writing sample in samples/, explicit instruction, field conventions from literature/), linked from the Style row on slide 15. Deck is 22 slides; outline in `structure.md` updated.
+
 ## Workflow after each change
-1. `latexmk -pdf slides.tex`
+1. `latexmk -pdf slides.tex` (fails if `slides.pdf` is open in a viewer)
 2. `python make_readme.py`
 3. Commit and push.
 
 ## Open TODOs
-- Slides 17 ("Putting it together") and 18 ("Get started now") overlap on purpose; merge them if the deck should be shorter.
+- Slides 20 ("Putting it together") and 21 ("Get started now") overlap on purpose; merge them if the deck should be shorter.

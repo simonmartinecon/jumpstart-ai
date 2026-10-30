@@ -102,7 +102,7 @@
   \end{itemize}
   \vspace{0.5em}
   \begin{keybox}
-    \icon{\faComments}\enspace Happy to discuss details any time: just send me an email (\email).
+    \icon{\faComments}\enspace Happy to discuss details any time: just send me an email.
   \end{keybox}
 \end{frame}
 
@@ -140,7 +140,7 @@
     \end{column}
     \begin{column}{0.48\textwidth}
       \icon{\faInfinity}\enspace\textbf{Theory}
-      \prompt{Turn my notes in notes.md into a formal proposition, in the style of the samples in samples/.}
+      \prompt{Turn my notes in notes.md into a formal proposition, in the style of the samples in samples/.} 
       \icon{\faChartBar}\enspace\textbf{Empirics}
       \prompt{Add clustered standard errors to all regressions in code/analysis.do.}
     \end{column}
@@ -170,7 +170,7 @@
   \end{columns}
   \vspace{0.4em}
   \begin{keybox}
-    \icon{\faLightbulb}\enspace The model is strong at working with what you give it, weak at recalling facts. So provide the sources (literature/, data/), and let the agent compute in code instead of answering from memory (see slides~\ref{script} and~\ref{pitfalls}).
+    \icon{\faLightbulb}\enspace The model is strong at working with what you give it, weak at recalling facts. So provide the sources (literature/, data/), and let the agent compute in code instead of answering from memory.
   \end{keybox}
 \end{frame}
 
@@ -206,27 +206,24 @@
       \parbox[c][1.3cm][c]{\linewidth}{\centering\Huge\icon{\faUserTie}}\par
       \textbf{Your agent is your research assistant}\par\medskip
       {\small Very capable, given context and clear instructions. You stay in charge.}\par\medskip
-      {\footnotesize\color{muted}$\rightarrow$ slides~\ref{ra}--\ref{charge}}
+      
     \end{column}
     \begin{column}{0.31\textwidth}
       \centering
       \parbox[c][1.3cm][c]{\linewidth}{\centering\Huge\icon{\faTools}}\par
       \textbf{A powerful tool, not a substitute}\par\medskip
       {\small Use it to work faster and to sharpen your understanding, not to do your thinking.}\par\medskip
-      {\footnotesize\color{muted}$\rightarrow$ slide~\ref{tool}}
+      
     \end{column}
     \begin{column}{0.31\textwidth}
       \centering
       \parbox[c][1.3cm][c]{\linewidth}{\centering\Huge\icon{\faFolderOpen}}\par
       \textbf{Project = folder}\par\medskip
       {\small One folder holds everything the agent needs, and you return to it each time.}\par\medskip
-      {\footnotesize\color{muted}$\rightarrow$ slide~\ref{folder}}
+
     \end{column}
   \end{columns}
   \vspace{1.2em}
-  \begin{keybox}
-    After the mindset, a few practical rules: plain text, no copy/paste, script everything.
-  \end{keybox}
 \end{frame}
 
 % ---------------------------------------------------------------
@@ -236,7 +233,7 @@
     \item Very capable, but only as good as the context you give it.
     \item Your job, as with any new RA:
     \begin{itemize}
-      \item \textbf{Context:} background, related literature, your terminology. A brilliant RA with a physics background needs to know how you use certain terms.
+      \item \textbf{Context:} background, related literature, your terminology. A brilliant RA with a physics background needs to know how  certain terms are used in economics.
       \item \textbf{Instructions:} what to do, which output you expect, and in which file.
       \item \textbf{Unclear points:} say how to handle them, for example:
     \end{itemize}
@@ -256,7 +253,7 @@
     \item \textbf{Verify:} read and check everything, and leave enough time for it at the end. AI slop shows.
     \item A second agent can cross-check for you, but the responsibility stays with you.
     \item \textbf{Memory drifts:} as a session grows, older or partly contradictory instructions get lost. Don't assume everything you ever said is still respected; now and then ask it to re-read the instructions or double-check.
-    \item \textbf{Fresh sessions:} start new sessions rather than one endless chat. Let the agent record progress and open points in \file{status.md}, and read it at the start of each session.
+    \item \textbf{Fresh sessions:} start new sessions rather than one endless chat. Let the agent record progress and open points in \file{status.md}, and have it read \file{instructions.md} and \file{status.md} at the start of each session.
   \end{itemize}
 \end{frame}
 
@@ -372,7 +369,7 @@
         \midrule
         Change the column order of Table~2 in paper.tex. & Change wage\_regs.do so that Table~2 comes out in this column order. \\
         \midrule
-        What does this coefficient imply in percent? (Then paste the answer.) & Add this calculation to the do-file, export the number, and use it in Section~4. \\
+        What does this coefficient imply in percent? (Then paste the answer.) & Add this calculation to the do-file, export the number, and use this in your document. \\
         \bottomrule
       \end{tabularx}
     \end{column}
@@ -386,32 +383,34 @@
   \label{instructions}
   \begin{columns}[T]
     \begin{column}{0.6\textwidth}
-      \footnotesize
-      \renewcommand{\arraystretch}{1.2}
+      \scriptsize
+      \renewcommand{\arraystretch}{1.1}
       \begin{tabularx}{\linewidth}{@{}l Y@{}}
         \toprule
         \textbf{Section} & \textbf{My typical content} \\
         \midrule
-        Scope      & \textit{We are writing a research paper in labour economics.} \\
+        Scope      & \textit{We are writing an academic research paper in economics.} \\
         Literature & \textit{Read the papers in literature/.} \\
         Stages     & sub-steps, and how we proceed and interact (longer projects) \\
         Output     & \textit{The main document is paper.tex.} \\
         Software   & which software; where code, input and output files are \\
-        Style      & a writing sample of mine in samples/: sets layout, language and tone \\
+        Style      & a writing sample of mine in samples/: sets layout, language and tone (slide~\ref{tone}) \\
         Checks     & \textit{At the end: grammar, language, style and consistency check.} \\
-        Logging    & \textit{Record progress and TODOs in status.md; read it at the start of each session.} \\
+        Logging    & \textit{Record progress and open TODOs in status.md.} \\
         \bottomrule
       \end{tabularx}
     \end{column}
     \begin{column}{0.36\textwidth}
-      \begin{itemize}\small
+      \begin{itemize}\footnotesize
         \item Instead of long one-off prompts: one file that sets the scope and the rules.
         \item \textbf{Format barely matters:} no syntax rules, .md or .txt. A little structure (headings) helps.
-        \item \textbf{Why bother:} 10--15 minutes of writing forces you to think through background, deliverables and sub-steps, and tells your RA clearly what to do.
-        \item Extend it as you go.
+        \item \textbf{Why bother:} 10--15 minutes of writing forces you to think through background, deliverables and sub-steps, and tells your RA clearly what to do. Extend it as you go.
       \end{itemize}
     \end{column}
   \end{columns}
+  \begin{keybox}
+    \icon{\faRedo}\enspace\textbf{Every session starts here:} the agent reads \file{instructions.md} and \file{status.md} and is back in full context.
+  \end{keybox}
 \end{frame}
 
 % ---------------------------------------------------------------
@@ -430,6 +429,32 @@
 \end{frame}
 
 % ---------------------------------------------------------------
+\begin{frame}{Language and tone}
+  \label{tone}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \icon{\faExclamationTriangle}\enspace\textbf{The problem}
+      \begin{itemize}\small
+        \item LLM writing off the shelf often sounds unnatural: generic phrasing, filler, overused buzzwords.
+        \item It certainly does not sound like you, nor like the papers in your field.
+        \item Readers notice: AI slop shows.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \icon{\faPenNib}\enspace\textbf{Solutions}
+      \begin{itemize}\small
+        \item \textbf{Writing sample:} put one or two of your own papers in \file{samples/}.
+        \item \textbf{Instruct it explicitly} to match your tone and style (in \file{instructions.md}).
+        \item \textbf{Field conventions:} let it follow the implicit conventions of the papers in \file{literature/}: notation, structure, how results are stated.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \vspace{0.3em}
+  \prompt{Match the language and tone of my papers in samples/. Avoid generic phrasing and buzzwords.}
+  \prompt{Follow the conventions of the papers in literature/ for notation and for how propositions are stated.}
+\end{frame}
+
+% ---------------------------------------------------------------
 \section{Ways of working}
 
 \begin{frame}{Ways of working}
@@ -445,7 +470,7 @@
     \begin{column}{0.48\textwidth}
       \icon{\faComments}\enspace\textbf{Sparring partner}
       \begin{itemize}\small
-        \item Test ideas before taking them to colleagues: does the argument hold up against what we wrote elsewhere, and against the literature?
+        \item Test ideas before taking them to colleagues or into actual writing: does the argument hold up against what we wrote elsewhere, and against the literature?
         \item Often points out what you have overlooked, such as a contradiction with an earlier section.
       \end{itemize}
       \prompt{I think we should reframe the discussion in Section 5 as follows: \dots{} Assess this critically against the rest of the paper and the literature in literature/.}

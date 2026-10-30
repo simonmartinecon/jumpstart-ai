@@ -1,6 +1,6 @@
 # Structure
 
-## Final deck as built (21 slides, version 0.1)
+## Final deck as built (22 slides, version 0.1)
 Introduction
 1. Title (with disclaimer: practical focus; ethics, data policies and copyright are out of scope, check your institution's, journals' and funders' rules)
 2. About these slides (objective, audience, prerequisites, caveat, contact)
@@ -22,17 +22,18 @@ Practical rules
 14. Script everything (Stata example + do/don't)
 
 instructions.md
-15. `instructions.md`: the contract
+15. `instructions.md`: the contract (+ "every session starts here": instructions.md and status.md restore the context)
 16. Example: the `instructions.md` behind these slides (excerpt + GitHub link)
+17. Language and tone (writing sample, explicit instruction, field conventions)
 
 Ways of working
-17. Ways of working (asynchronous; sparring partner)
-18. Pitfalls (citations, backups, confidential data)
+18. Ways of working (asynchronous; sparring partner)
+19. Pitfalls (citations, backups, confidential data)
 
 Jump start
-19. Putting it together: the jump start
-20. Get started now
-21. Thanks and further reading
+20. Putting it together: the jump start
+21. Get started now
+22. Thanks and further reading
 
 The sections below document the planning in Stages 1 and 2.
 
